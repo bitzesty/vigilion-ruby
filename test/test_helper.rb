@@ -1,0 +1,6 @@
+require_relative "../lib/virus_scanner"
+require "json"
+require "minitest/autorun"
+require "minitest/unit"
+require "mocha/test_unit"
+require "webmock/minitest"
