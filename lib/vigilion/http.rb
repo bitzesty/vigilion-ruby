@@ -3,11 +3,11 @@ module Vigilion
     attr_accessor :url, :options, :method
 
     def initialize
-      @conn = ::Faraday.new(url: ENV["VIGILION_API_URL"]) do |c|
+      @conn = ::Faraday.new(url: Configuration.server_url) do |c|
         c.request :url_encoded
         c.response :json, content_type: /\bjson$/
         c.adapter ::Faraday.default_adapter
-        c.headers = { "X-Auth-Token" => ENV["VIGILION_API_KEY"], "User-Agent" => "Vigilion #{Vigilion::VERSION} (#{RUBY_PLATFORM}, Ruby #{RUBY_VERSION})" }
+        c.headers = { "X-Auth-Token" => Configuration.api_key, "User-Agent" => "Vigilion #{Vigilion::VERSION} (#{RUBY_PLATFORM}, Ruby #{RUBY_VERSION})" }
       end
     rescue Vigilion::HttpError => e
       handle_exception(e)

@@ -1,7 +1,5 @@
 require_relative "./test_helper.rb"
 
-ENV["VIGILION_API_URL"] = "http://localhost:3000"
-
 describe Vigilion::HTTP do
   describe "#post" do
     it "returns status of job if posted with success" do
