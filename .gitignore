@@ -1,7 +1,6 @@
 .DS_Store
 Gemfile.lock
 .bundle
-/virus-scanner*.gem
 /tmp
 .ruby-gemset
 *.swp

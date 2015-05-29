@@ -1,4 +1,4 @@
-module VirusScanner
+module Vigilion
   class Error < StandardError
     def initialize(statement)
       if statement.is_a?(Exception)

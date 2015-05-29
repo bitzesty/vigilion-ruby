@@ -1,4 +1,4 @@
-module VirusScanner
+module Vigilion
   class File
     attr_accessor :body
     def self.scan_url(uuid, url)
@@ -15,7 +15,7 @@ module VirusScanner
     end
 
     def self.handler
-      VirusScanner::HTTP.new
+      Vigilion::HTTP.new
     end
   end
 end

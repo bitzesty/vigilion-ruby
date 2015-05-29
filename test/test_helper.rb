@@ -1,4 +1,4 @@
-require_relative "../lib/virus_scanner"
+require_relative "../lib/vigilion"
 require "json"
 require "minitest/autorun"
 require "minitest/unit"

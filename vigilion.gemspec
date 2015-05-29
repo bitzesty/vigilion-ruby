@@ -1,16 +1,16 @@
 # coding: utf-8
 lib = File.expand_path("../lib", __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require "virus_scanner/version"
+require "vigilion/version"
 
 Gem::Specification.new do |s|
-  s.name          = "virus-scanner"
-  s.version       = VirusScanner::VERSION
+  s.name          = "vigilion"
+  s.version       = Vigilion::VERSION
   s.authors       = ["BitZesty Ltd"]
   s.email         = ["info@bitzesty.com"]
-  s.description   = "API client for virus-scanner service"
-  s.summary       = "API client for virus-scanner service"
-  s.homepage      = "https://github.com/bitzesty/vs-ruby"
+  s.description   = "API client for Vigilion virus scan service"
+  s.summary       = "API client for Vigilion virus scan service"
+  s.homepage      = "https://github.com/bitzesty/vigilion-ruby"
   s.license       = "MIT"
 
   s.files         = `git ls-files`.split($/)
@@ -19,7 +19,4 @@ Gem::Specification.new do |s|
 
   s.add_dependency "faraday"
   s.add_dependency "faraday_middleware"
-
-  s.add_development_dependency "bundler", "~> 1.3"
-  s.add_development_dependency "rake"
 end

@@ -1,11 +1,11 @@
-# vs-ruby
-This is ruby gem for communication with Virus Scanner API.
+# Vigilion
+This is ruby gem for communication with Vigilion - Virus Scan Service.
 
 ## Installation
 
 To use it in your project, add following line to your Gemfile
 
-`gem vs-ruby`
+`gem vigilion`
 
 and then run
 
@@ -13,7 +13,7 @@ and then run
 
 or install it by hand
 
-`gem install vs-ruby`
+`gem install vigilion`
 
 It uses faraday as HTTP middleware so you may use any HTTP backend you want. Net:HTTP is default one.
 
@@ -21,7 +21,7 @@ It uses faraday as HTTP middleware so you may use any HTTP backend you want. Net
 
 ## Usage
 
-`VirusScanner::File` class has two methods:
+`Vigilion::File` class has two methods:
 
  * `check_from_url` which accepts URL to remote file as argument and returns scan job status
  * `check_status` which accepts job UUID as argument and returns information about job status
