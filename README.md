@@ -21,10 +21,10 @@ It uses faraday as HTTP middleware so you may use any HTTP backend you want. Net
 
 ## Usage
 
-`Vigilion::File` class has two methods:
+`Vigilion` class has two methods:
 
- * `check_from_url` which accepts URL to remote file as argument and returns scan job status
- * `check_status` which accepts job UUID as argument and returns information about job status
+ * `scan_url(identifier, url)` which accepts URL to remote file as argument and returns scan job status
+ * `check_status(identifier)` which accepts job UUID as argument and returns information about job status
 
 (c) 2015 BitZesty Ltd.
 

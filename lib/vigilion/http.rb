@@ -12,7 +12,7 @@ module Vigilion
       end
     end
 
-    def post(uuid, url)
+    def scan_url(uuid, url)
       request = { uuid: uuid, url: url.to_json }
       response = @conn.post "/scan", request
       unless response.status.between? 200, 299
