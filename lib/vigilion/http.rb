@@ -13,7 +13,11 @@ module Vigilion
     end
 
     def post(uuid, url)
-      response = @conn.post "/scan", uuid: uuid, url: url
+      request = { uuid: uuid, url: url.to_json }
+      response = @conn.post "/scan", request
+      unless response.status.between? 200, 299
+        raise Vigilion::Error.new("Invalid scanning request: #{request}. Response: #{response.body}")
+      end
       response.body
     end
 
