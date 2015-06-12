@@ -4,7 +4,7 @@ describe Vigilion::HTTP do
   describe "#post" do
     it "returns status of job if posted with success" do
       # stub POST request for providing URL to files for scan
-      stub_request(:post, "localhost:5000/scan").to_return(
+      stub_request(:post, "localhost:5000/scans").to_return(
         body: { "status" => "scanning" }.to_json)
 
       # check if stubbed URL provides status for scan job
@@ -20,7 +20,7 @@ describe Vigilion::HTTP do
           md5: "69630e4574ec6798239b091cda43dca0",
           status: "error" }.to_json
 
-      stub_request(:get, "localhost:5000/status/de401fdf-08b0-44a8-810b-20794c5c98c7").to_return(
+      stub_request(:get, "localhost:5000/scans/de401fdf-08b0-44a8-810b-20794c5c98c7").to_return(
         body: body)
 
       result = Vigilion.check_status("de401fdf-08b0-44a8-810b-20794c5c98c7")

@@ -12,7 +12,7 @@ describe Vigilion::Configuration do
 
     it "has default values" do
       refute_nil Vigilion::Configuration.server_url
-      refute_nil Vigilion::Configuration.api_key
+      refute_nil Vigilion::Configuration.access_key_id
     end
   end
 end

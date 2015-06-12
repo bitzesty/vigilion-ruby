@@ -3,18 +3,18 @@ module Vigilion
     attr_accessor :url, :options, :method
 
     def initialize
-      validate_api_key
+      validate_access_key_id
       @conn = ::Faraday.new(url: Configuration.server_url) do |c|
         c.request :url_encoded
         c.response :json, content_type: /\bjson$/
         c.adapter ::Faraday.default_adapter
-        c.headers = { "X-Auth-Token" => Configuration.api_key, "User-Agent" => "Vigilion #{Vigilion::VERSION} (#{RUBY_PLATFORM}, Ruby #{RUBY_VERSION})" }
+        c.headers = { "X-Auth-Token" => Configuration.access_key_id, "User-Agent" => "Vigilion #{Vigilion::VERSION} (#{RUBY_PLATFORM}, Ruby #{RUBY_VERSION})" }
       end
     end
 
-    def scan_url(uuid, url)
-      request = { uuid: uuid, url: url }
-      response = @conn.post "/scan", request
+    def scan_url(key, url)
+      request = {scan: { key: key, url: url }}
+      response = @conn.post "/scans", request
       unless response.status.between? 200, 299
         raise Vigilion::Error.new("Invalid scanning request: #{request}. Response: #{response.body}")
       end
@@ -22,14 +22,14 @@ module Vigilion
     end
 
     def get(uuid)
-      response = @conn.get "/status/#{uuid}"
+      response = @conn.get "/scans/#{uuid}"
       response.body
     end
 
   private
 
-    def validate_api_key
-      raise Vigilion::Error.new("api_key not present") unless Configuration.api_key
+    def validate_access_key_id
+      raise Vigilion::Error.new("access_key_id not present") unless Configuration.access_key_id
     end
   end
 end
