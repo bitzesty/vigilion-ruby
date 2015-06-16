@@ -5,6 +5,7 @@ module Vigilion
     def initialize
       validate_access_key_id
       @conn = ::Faraday.new(url: Configuration.server_url) do |c|
+        c.request :multipart
         c.request :url_encoded
         c.response :json, content_type: /\bjson$/
         c.adapter ::Faraday.default_adapter
@@ -13,12 +14,11 @@ module Vigilion
     end
 
     def scan_url(key, url)
-      request = {scan: { key: key, url: url }}
-      response = @conn.post "/scans", request
-      unless response.status.between? 200, 299
-        raise Vigilion::Error.new("Invalid scanning request: #{request}. Response: #{response.body}")
-      end
-      response.body
+      send scan: { key: key, url: url }
+    end
+
+    def scan_path(key, path)
+      send scan: { key: key, file: Faraday::UploadIO.new(path, 'application') }
     end
 
     def get(uuid)
@@ -27,6 +27,14 @@ module Vigilion
     end
 
   private
+
+    def send(request)
+      response = @conn.post "/scans", request
+      unless response.status.between? 200, 299
+        raise Vigilion::Error.new("Invalid scanning request: #{request}. Response: #{response.body}")
+      end
+      response.body
+    end
 
     def validate_access_key_id
       raise Vigilion::Error.new("access_key_id not present") unless Configuration.access_key_id

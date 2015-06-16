@@ -17,6 +17,10 @@ module Vigilion
     Vigilion::HTTP.new.scan_url identifier, url
   end
 
+  def self.scan_path(identifier, path)
+    Vigilion::HTTP.new.scan_path identifier, path
+  end
+
   def self.check_status(identifier)
     Vigilion::HTTP.new.get(identifier)
   end
