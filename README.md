@@ -1,15 +1,13 @@
 # Vigilion
 Vigilion is a SaaS that allows asynchronously scanning files
-detecting trojans, viruses, malware & other malicious threats
-and sends back the results to your app.
+detecting trojans, viruses, malware & other malicious threats.
 
-This is a Ruby gem to allow client applications to integrate to
-Vigilion Scanning Service.
+This is a Ruby gem that allows client applications to integrate to
+Vigilion scanning service.
 
 If you use Rails, you probably want to take a look at
 https://github.com/vigilion/vigilion-rails which includes
-integration with Active Records and Action Controllers.
-
+integration with Active Record and Action Controller.
 
 ## Installation
 
@@ -32,24 +30,24 @@ backend you want. Net:HTTP is default one.
 
 ## Usage
 
-`Vigilion` gem expose the following methods:
+`Vigilion` gem exposes the following methods:
 
 * `Vigilion.scan_url(resource_identifier, url)`
 Sends a request to Vigilion Server to enqueue the URL of the
 file to be scanned.
 It requires two parameters:
-** the resource identifier, it could be any string and it
+ * the resource identifier, it could be any string and it
 represents the ID of the file in your system.
-** an absolute URL that Vigilion scanner will use to download
+ * an absolute URL that Vigilion scanner will use to download
 the file before scanning.
 
 * `Vigilion.scan_path(resource_identifier, local_path)`
 This method takes a local file and sends a request to Vigilion
 Server to enqueue the file to be scanned.
 It requires two parameters:
-** the resource identifier, it could be any string and it
+ * the resource identifier, it could be any string and it
 represents the ID of the file in your system.
-** the local path to the file. It will be sent using HTTP POST
+ * the local path to the file. It will be sent using HTTP POST
 and stored temporaly in Vigilion servers.
 
 * `Vigilion.configure(&block)`
