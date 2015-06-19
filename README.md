@@ -26,13 +26,11 @@ or install it by hand
 It uses faraday as HTTP middleware so you may use any HTTP
 backend you want. Net:HTTP is default one.
 
-(TODO: add configuration option to change HTTP request)
-
 ## Usage
 
-`Vigilion` gem exposes the following methods:
+**Vigilion** gem exposes the following methods:
 
-* `Vigilion.scan_url(resource_identifier, url)`
+`Vigilion.scan_url(resource_identifier, url)`
 Sends a request to Vigilion Server to enqueue the URL of the
 file to be scanned.
 It requires two parameters:
@@ -41,7 +39,7 @@ represents the ID of the file in your system.
  * an absolute URL that Vigilion scanner will use to download
 the file before scanning.
 
-* `Vigilion.scan_path(resource_identifier, local_path)`
+`Vigilion.scan_path(resource_identifier, local_path)`
 This method takes a local file and sends a request to Vigilion
 Server to enqueue the file to be scanned.
 It requires two parameters:
@@ -50,7 +48,7 @@ represents the ID of the file in your system.
  * the local path to the file. It will be sent using HTTP POST
 and stored temporaly in Vigilion servers.
 
-* `Vigilion.configure(&block)`
+`Vigilion.configure(&block)`
 Configures the credentials and other configuration to connect with
 the server.
 You need to call this method before calling any other.
@@ -63,7 +61,7 @@ end
 ```
 To obtain your credentials, please visit the Vigilion site.
 
-* `Vigilion.check_status(identifier)`
+`Vigilion.check_status(identifier)`
 Accepts job UUID as an argument and returns information about
 job status.
 
