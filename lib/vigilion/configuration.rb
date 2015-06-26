@@ -12,6 +12,5 @@ module Vigilion
   end
 
   Configuration.server_url = "http://localhost:5000"
-  Configuration.access_key_id = ""
 end
 
