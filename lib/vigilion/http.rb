@@ -6,10 +6,10 @@ module Vigilion
       validate_access_keys
       @conn = ::Faraday.new(url: Configuration.server_url) do |c|
         c.request :multipart
-        c.request :url_encoded
         c.response :json, content_type: /\bjson$/
         c.adapter ::Faraday.default_adapter
         c.headers = {
+          "Content-Type" => "application/json",
           "Auth-Key" => Configuration.access_key_id,
           "User-Agent" => "Vigilion #{Vigilion::VERSION} (#{RUBY_PLATFORM}, Ruby #{RUBY_VERSION})" }
       end
@@ -35,8 +35,10 @@ module Vigilion
   private
 
     def send(request)
-      response = @conn.post "/scans", request do |req|
-        req.headers["Auth-Hash"] = self.class.digest(request)
+      body = request.to_json
+      response = @conn.post "/scans" do |req|
+        req.body = body
+        req.headers["Auth-Hash"] = self.class.digest(body)
       end
       unless response.status.between? 200, 299
         raise Vigilion::Error.new("Invalid scanning request: #{request}. Response: #{response.body}")
