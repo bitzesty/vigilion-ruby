@@ -1,3 +1,6 @@
+require "ostruct"
+require "singleton"
+
 module Vigilion
   class Configuration < OpenStruct
     include Singleton
@@ -13,4 +16,3 @@ module Vigilion
 
   Configuration.server_url = "http://localhost:5000"
 end
-
