@@ -34,21 +34,34 @@ module Vigilion
 
   private
 
+    HOW_TO_CONFIGURE = <<-MESSAGE
+To configure the access keys add a Vigilion.configure block during the application start up.
+If you are using vigilion-rails, execute `rails g vigilion:install` to create an initializer.
+By default the initializer uses environment variables so make sure they are present.
+If you don't know your access keys, go to vigilion.com and get them!
+MESSAGE
+
+    INVALID_CREDENTIALS = <<-MESSAGE
+The provided credentials are not valid.
+Visit http://vigilion.com to get the access keys of your project.
+MESSAGE
+
     def send(request)
       body = request.to_json
       response = @conn.post "/scans" do |req|
         req.body = body
         req.headers["Auth-Hash"] = self.class.digest(body)
       end
+      raise Vigilion::Error.new(INVALID_CREDENTIALS) if response.status == 401
       unless response.status.between? 200, 299
-        raise Vigilion::Error.new("Invalid scanning request: #{request}. Response: #{response.body}")
+        raise Vigilion::Error.new("Invalid scanning request: #{request}. Status: #{response.status}. Response: #{response.body}")
       end
       response.body
     end
 
     def validate_access_keys
-      raise Vigilion::Error.new("access_key_id not present") unless Configuration.access_key_id
-      raise Vigilion::Error.new("secret_access_key not present") unless Configuration.secret_access_key
+      raise Vigilion::Error.new("Configuration.access_key_id is not present\n#{HOW_TO_CONFIGURE}") unless Configuration.access_key_id
+      raise Vigilion::Error.new("Configuration.secret_access_key is not present\n#{HOW_TO_CONFIGURE}") unless Configuration.secret_access_key
     end
   end
 end
