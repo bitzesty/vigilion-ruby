@@ -28,6 +28,15 @@ module Vigilion
       response.body
     end
 
+    def validate
+      body = ""
+      response = @conn.get "/projects/validate" do |req|
+        req.body = body
+        req.headers["Auth-Hash"] = self.class.digest(body)
+      end
+      process_response(response)
+    end
+
     def self.digest(body)
       Digest::MD5.hexdigest("#{body}#{Vigilion::Configuration.secret_access_key}")
     end
@@ -52,8 +61,12 @@ MESSAGE
         req.body = body
         req.headers["Auth-Hash"] = self.class.digest(body)
       end
+      process_response(response)
+    end
+
+    def process_response(response)
       raise Vigilion::Error.new(INVALID_CREDENTIALS) if response.status == 401
-      unless response.status.between? 200, 299
+      unless response.success?
         raise Vigilion::Error.new("Invalid scanning request: #{request}. Status: #{response.status}. Response: #{response.body}")
       end
       response.body
