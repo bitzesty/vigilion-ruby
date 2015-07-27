@@ -1,3 +1,5 @@
+require "vigilion/authentication"
+
 module Vigilion
   class HTTP
     attr_accessor :url, :options, :method
@@ -6,10 +8,11 @@ module Vigilion
       validate_access_keys
       @conn = ::Faraday.new(url: Configuration.server_url) do |c|
         c.request :multipart
+        c.request :url_encoded
+        c.request :authentication
         c.response :json, content_type: /\bjson$/
         c.adapter ::Faraday.default_adapter
         c.headers = {
-          "Content-Type" => "application/json",
           "Auth-Key" => Configuration.access_key_id,
           "User-Agent" => "Vigilion #{Vigilion::VERSION} (#{RUBY_PLATFORM}, Ruby #{RUBY_VERSION})" }
       end
@@ -29,12 +32,8 @@ module Vigilion
     end
 
     def validate
-      body = ""
-      response = @conn.get "/projects/validate" do |req|
-        req.body = body
-        req.headers["Auth-Hash"] = self.class.digest(body)
-      end
-      process_response(body, response)
+      response = @conn.get "/projects/validate"
+      process_response("", response)
     end
 
     def self.digest(body)
@@ -56,11 +55,7 @@ Visit http://vigilion.com to get the access keys of your project.
 MESSAGE
 
     def send(request)
-      body = request.to_json
-      response = @conn.post "/scans" do |req|
-        req.body = body
-        req.headers["Auth-Hash"] = self.class.digest(body)
-      end
+      response = @conn.post "/scans", request
       process_response(request, response)
     end
 
