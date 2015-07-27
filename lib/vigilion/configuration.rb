@@ -15,4 +15,3 @@ module Vigilion
 
   Configuration.server_url = "http://localhost:5000"
 end
-
