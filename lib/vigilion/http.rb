@@ -34,7 +34,7 @@ module Vigilion
         req.body = body
         req.headers["Auth-Hash"] = self.class.digest(body)
       end
-      process_response(response)
+      process_response(body, response)
     end
 
     def self.digest(body)
@@ -61,10 +61,10 @@ MESSAGE
         req.body = body
         req.headers["Auth-Hash"] = self.class.digest(body)
       end
-      process_response(response)
+      process_response(request, response)
     end
 
-    def process_response(response)
+    def process_response(request, response)
       raise Vigilion::Error.new(INVALID_CREDENTIALS) if response.status == 401
       unless response.success?
         raise Vigilion::Error.new("Invalid scanning request: #{request}. Status: #{response.status}. Response: #{response.body}")

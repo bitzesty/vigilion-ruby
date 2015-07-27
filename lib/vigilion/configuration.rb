@@ -1,3 +1,5 @@
+require 'singleton'
+
 module Vigilion
   class Configuration < OpenStruct
     include Singleton
