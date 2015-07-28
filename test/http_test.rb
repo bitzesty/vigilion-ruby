@@ -26,14 +26,46 @@ describe Vigilion::HTTP do
       end
     end
 
-    describe "#post" do
+    describe "#scan_url" do
       it "returns status of job if posted with success" do
         # stub POST request for providing URL to files for scan
         stub_request(:post, "localhost:5000/scans").to_return(
           body: { "status" => "scanning" }.to_json)
 
         # check if stubbed URL provides status for scan job
-        scan_request = Vigilion.scan_url("de401fdf-08b0-44a8-810b-20794c5c98c7", "url")
+        scan_request = Vigilion.scan_url("id", "url")
+        assert_includes(scan_request, "scanning")
+      end
+
+      it "accepts options" do
+        # stub POST request for providing URL to files for scan
+        stub_request(:post, "localhost:5000/scans").to_return(
+          body: { "status" => "scanning" }.to_json)
+
+        # check if stubbed URL provides status for scan job
+        scan_request = Vigilion.scan_url("id", "url", force: true)
+        assert_includes(scan_request, "scanning")
+      end
+    end
+
+    describe "#scan_path" do
+      it "returns status of job if posted with success" do
+        # stub POST request for providing URL to files for scan
+        stub_request(:post, "localhost:5000/scans").to_return(
+          body: { "status" => "scanning" }.to_json)
+
+        # check if stubbed URL provides status for scan job
+        scan_request = Vigilion.scan_path("id", "test/sample_file.txt")
+        assert_includes(scan_request, "scanning")
+      end
+
+      it "accepts options" do
+        # stub POST request for providing URL to files for scan
+        stub_request(:post, "localhost:5000/scans").to_return(
+          body: { "status" => "scanning" }.to_json)
+
+        # check if stubbed URL provides status for scan job
+        scan_request = Vigilion.scan_path("id", "test/sample_file.txt", force: true)
         assert_includes(scan_request, "scanning")
       end
     end

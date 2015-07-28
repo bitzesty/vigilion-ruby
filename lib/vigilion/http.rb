@@ -18,12 +18,12 @@ module Vigilion
       end
     end
 
-    def scan_url(key, url)
-      send scan: { key: key, url: url }
+    def scan_url(key, url, options = {})
+      send scan: options.merge({ key: key, url: url })
     end
 
-    def scan_path(key, path)
-      send scan: { key: key, file: Faraday::UploadIO.new(path, 'application') }
+    def scan_path(key, path, options = {})
+      send scan: options.merge({ key: key, file: Faraday::UploadIO.new(path, 'application') })
     end
 
     def get(uuid)

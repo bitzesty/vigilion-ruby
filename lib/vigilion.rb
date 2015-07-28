@@ -13,12 +13,12 @@ module Vigilion
     Vigilion::Configuration.configure(&block)
   end
 
-  def self.scan_url(identifier, url)
-    Vigilion::HTTP.new.scan_url identifier, url
+  def self.scan_url(identifier, url, options = {})
+    Vigilion::HTTP.new.scan_url identifier, url, options
   end
 
-  def self.scan_path(identifier, path)
-    Vigilion::HTTP.new.scan_path identifier, path
+  def self.scan_path(identifier, path, options = {})
+    Vigilion::HTTP.new.scan_path identifier, path, options
   end
 
   def self.check_status(identifier)
