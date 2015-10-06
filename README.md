@@ -55,7 +55,7 @@ represents the ID of the file in your system.
  * an absolute URL that Vigilion scanner will use to download
 the file before scanning.
 
-###Using a local file path 
+###Using a local file path
 
 `Vigilion.scan_path(resource_identifier, local_path)`
 This method takes a local file and sends a request to the Vigilion
@@ -72,5 +72,4 @@ and stored temporaly in the Vigilion Server.
 Accepts job UUID as an argument and returns information about
 job status.
 
-(c) 2015 BitZesty Ltd.
-
+(c) 2015 Bit Zesty Ltd.
