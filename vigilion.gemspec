@@ -4,13 +4,13 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require "vigilion/version"
 
 Gem::Specification.new do |s|
-  s.name          = "vigilion"
+  s.name          = "Vigilion"
   s.version       = Vigilion::VERSION
   s.authors       = ["BitZesty Ltd"]
-  s.email         = ["info@bitzesty.com"]
+  s.email         = ["help@vigilion.com"]
   s.description   = "API client for Vigilion virus scan service"
   s.summary       = "API client for Vigilion virus scan service"
-  s.homepage      = "https://github.com/bitzesty/vigilion-ruby"
+  s.homepage      = "https://github.com/vigilion/vigilion-ruby"
   s.license       = "MIT"
 
   s.files         = `git ls-files`.split($/)

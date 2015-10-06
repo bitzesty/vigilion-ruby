@@ -13,5 +13,5 @@ module Vigilion
     end
   end
 
-  Configuration.server_url = "http://localhost:5000"
+  Configuration.server_url = "https://api.vigilion.com"
 end
