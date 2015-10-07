@@ -4,7 +4,7 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require "vigilion/version"
 
 Gem::Specification.new do |s|
-  s.name          = "Vigilion"
+  s.name          = "vigilion"
   s.version       = Vigilion::VERSION
   s.authors       = ["BitZesty Ltd"]
   s.email         = ["help@vigilion.com"]
