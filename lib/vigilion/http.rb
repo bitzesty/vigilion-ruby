@@ -61,6 +61,7 @@ MESSAGE
 
     def process_response(request, response)
       raise Vigilion::Error.new(INVALID_CREDENTIALS) if response.status == 401
+      raise Vigilion::Error.new("Payment required: #{response.body['error']}") if response.status == 402
       unless response.success?
         raise Vigilion::Error.new("Invalid scanning request: #{request}. Status: #{response.status}. Response: #{response.body}")
       end
