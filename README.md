@@ -1,8 +1,8 @@
 # Vigilion
 
-This Ruby gem is for integrating with the Vigilion Anti-Virus & Malware file scanning service.
+This Ruby gem is for integrating with the [Vigilion Anti-Virus & Malware file scanning service](https://www.vigilion.com/).
 
-If you are using Rails, you should use are [Rails gem](
+If you are using Rails, you should use our [Rails gem](
 https://github.com/vigilion/vigilion-rails), which includes
 integration with Active Record and Action Controller.
 
