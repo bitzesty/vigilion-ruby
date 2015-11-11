@@ -73,7 +73,7 @@ describe Vigilion::HTTP do
     describe "#get" do
       it "returns status of a job for provided uuid" do
         body = { id: "de401fdf-08b0-44a8-810b-20794c5c98c7",
-            result: "------------ SCAN SUMMARY -----------",
+            result: "Eicar-Test-Signature FOUND",
             md5: "69630e4574ec6798239b091cda43dca0",
             status: "error" }.to_json
 
