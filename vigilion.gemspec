@@ -6,10 +6,10 @@ require "vigilion/version"
 Gem::Specification.new do |s|
   s.name          = "vigilion"
   s.version       = Vigilion::VERSION
-  s.authors       = ["BitZesty Ltd"]
+  s.authors       = ["Bit Zesty Ltd"]
   s.email         = ["help@vigilion.com"]
-  s.description   = "API client for Vigilion virus scan service"
-  s.summary       = "API client for Vigilion virus scan service"
+  s.description   = "API client for Vigilion Anti-Virus & Malware file scanning service"
+  s.summary       = "API client for Vigilion Anti-Virus & Malware file scanning service"
   s.homepage      = "https://github.com/vigilion/vigilion-ruby"
   s.license       = "MIT"
 
