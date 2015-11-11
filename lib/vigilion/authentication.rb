@@ -2,7 +2,7 @@ require 'faraday'
 
 module Vigilion
   class Authentication < Faraday::Middleware
-    KEY = "Auth-Hash"
+    KEY = 'X-Api-Key'
 
     def call(env)
       if env[:body].respond_to? :read

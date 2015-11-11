@@ -8,7 +8,7 @@ integration with Active Record and Action Controller.
 
 ## Installation
 
-Add vigilion to your `Gemfile` and then run ` bundle install`
+Add vigilion to your `Gemfile` and then run `bundle install`
 
 `gem vigilion`
 
@@ -25,7 +25,8 @@ You need to configure the client before making any API requests e.g. in an initi
 
 ```
 Vigilion.configure do |config|
-  config.api_key = 'xxxxxxx'
+  config.access_key_id = ENV['VIGILION_API_KEY']
+  config.secret_access_key = ENV['VIGILION_API_SECRET']
 end
 ```
 

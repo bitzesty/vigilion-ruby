@@ -13,8 +13,9 @@ module Vigilion
         c.response :json, content_type: /\bjson$/
         c.adapter ::Faraday.default_adapter
         c.headers = {
-          "Auth-Key" => Configuration.access_key_id,
-          "User-Agent" => "Vigilion #{Vigilion::VERSION} (#{RUBY_PLATFORM}, Ruby #{RUBY_VERSION})" }
+          'X-Api-Key' => Configuration.access_key_id,
+          'User-Agent' => "Vigilion #{Vigilion::VERSION} (#{RUBY_PLATFORM}, Ruby #{RUBY_VERSION})"
+        }
       end
     end
 
