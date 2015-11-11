@@ -8,7 +8,7 @@ module Vigilion
       validate_access_keys
       @conn = ::Faraday.new(url: Configuration.server_url) do |c|
         c.request :multipart
-        c.request :url_encoded
+        c.request :json
         c.request :authentication
         c.response :json, content_type: /\bjson$/
         c.adapter ::Faraday.default_adapter
@@ -47,12 +47,12 @@ module Vigilion
 To configure the access keys add a Vigilion.configure block during the application start up.
 If you are using vigilion-rails, execute `rails g vigilion:install` to create an initializer.
 By default the initializer uses environment variables so make sure they are present.
-If you don't know your access keys, go to vigilion.com and get them!
+If you don't know your access keys, go to https://www.vigilion.com and get them!
 MESSAGE
 
     INVALID_CREDENTIALS = <<-MESSAGE
 The provided credentials are not valid.
-Visit http://vigilion.com to get the access keys of your project.
+Visit https://www.vigilion.com to get the access keys of your project.
 MESSAGE
 
     def send(request)
