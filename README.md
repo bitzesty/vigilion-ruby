@@ -10,7 +10,7 @@ integration with Active Record and Action Controller.
 
 Add vigilion to your `Gemfile` and then run `bundle install`
 
-`gem vigilion`
+`gem 'vigilion'`
 
 or install it by hand
 
