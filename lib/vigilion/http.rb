@@ -11,6 +11,7 @@ module Vigilion
         c.request :json
         c.request :authentication
         c.response :json, content_type: /\bjson$/
+        c.response :detailed_logger
         c.adapter ::Faraday.default_adapter
         c.headers = {
           'X-Api-Key' => Configuration.access_key_id,
