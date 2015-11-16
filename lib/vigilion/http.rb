@@ -9,7 +9,6 @@ module Vigilion
       @conn = ::Faraday.new(url: Configuration.server_url) do |c|
         c.request :multipart
         c.request :json
-        c.request :authentication
         c.response :json, content_type: /\bjson$/
         c.response :detailed_logger
         c.adapter ::Faraday.default_adapter
