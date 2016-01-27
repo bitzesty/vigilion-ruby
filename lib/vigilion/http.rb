@@ -1,5 +1,3 @@
-require "vigilion/authentication"
-
 module Vigilion
   class HTTP
     attr_accessor :url, :options, :method
