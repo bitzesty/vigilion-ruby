@@ -1,7 +1,7 @@
 require_relative "./test_helper.rb"
 
 describe Vigilion::Configuration do
-  describe "configure" do
+  describe ".configure" do
     it "allows set attributes" do
       Vigilion.configure do |config|
         config.attribute = "something"

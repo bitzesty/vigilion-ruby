@@ -1,5 +1,6 @@
 require_relative "./test_helper.rb"
 
+
 describe Vigilion::HTTP do
 
   describe "constructor" do
@@ -29,7 +30,7 @@ describe Vigilion::HTTP do
     describe "#scan_url" do
       it "returns status of job if posted with success" do
         # stub POST request for providing URL to files for scan
-        stub_request(:post, "localhost:5000/scans").to_return(
+        stub_request(:post, "https://api.vigilion.com/scans").to_return(
           body: { "status" => "scanning" }.to_json)
 
         # check if stubbed URL provides status for scan job
@@ -39,7 +40,7 @@ describe Vigilion::HTTP do
 
       it "accepts options" do
         # stub POST request for providing URL to files for scan
-        stub_request(:post, "localhost:5000/scans").to_return(
+        stub_request(:post, "https://api.vigilion.com/scans").to_return(
           body: { "status" => "scanning" }.to_json)
 
         # check if stubbed URL provides status for scan job
@@ -51,7 +52,7 @@ describe Vigilion::HTTP do
     describe "#scan_path" do
       it "returns status of job if posted with success" do
         # stub POST request for providing URL to files for scan
-        stub_request(:post, "localhost:5000/scans").to_return(
+        stub_request(:post, "https://api.vigilion.com/scans").to_return(
           body: { "status" => "scanning" }.to_json)
 
         # check if stubbed URL provides status for scan job
@@ -61,7 +62,7 @@ describe Vigilion::HTTP do
 
       it "accepts options" do
         # stub POST request for providing URL to files for scan
-        stub_request(:post, "localhost:5000/scans").to_return(
+        stub_request(:post, "https://api.vigilion.com/scans").to_return(
           body: { "status" => "scanning" }.to_json)
 
         # check if stubbed URL provides status for scan job
@@ -77,7 +78,7 @@ describe Vigilion::HTTP do
             md5: "69630e4574ec6798239b091cda43dca0",
             status: "error" }.to_json
 
-        stub_request(:get, "localhost:5000/scans/de401fdf-08b0-44a8-810b-20794c5c98c7").to_return(
+        stub_request(:get, "https://api.vigilion.com/scans/de401fdf-08b0-44a8-810b-20794c5c98c7").to_return(
           body: body)
 
         result = Vigilion.check_status("de401fdf-08b0-44a8-810b-20794c5c98c7")
