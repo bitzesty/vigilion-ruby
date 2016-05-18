@@ -1,5 +1,4 @@
-require "rubygems"
-require "rake"
+require "bundler/gem_tasks"
 require "rake/testtask"
 
 Rake::TestTask.new(:test) do |t|
@@ -9,3 +8,7 @@ Rake::TestTask.new(:test) do |t|
 end
 
 task default: :test
+
+task :console do
+  exec "irb -r vigilion -I ./lib"
+end
