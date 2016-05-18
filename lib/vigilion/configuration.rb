@@ -1,4 +1,5 @@
 require 'singleton'
+require 'ostruct'
 
 module Vigilion
   class Configuration < OpenStruct
