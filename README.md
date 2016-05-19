@@ -34,6 +34,6 @@ Vigilion.configure do |config|
 end
 ```
 
-Vigilion documentation [https://vigilion.readme.io/docs/ruby](https://vigilion.readme.io/docs/ruby)
+Vigilion [API documentation](https://docs.vigilion.com/)
 
 (c) 2015 Bit Zesty Ltd.
