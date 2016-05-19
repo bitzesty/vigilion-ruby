@@ -1,3 +1,4 @@
+require 'logger'
 require 'singleton'
 require 'ostruct'
 
@@ -15,4 +16,6 @@ module Vigilion
   end
 
   Configuration.server_url = "https://api.vigilion.com"
+  Configuration.logger = Logger.new($stdout)
+  Configuration.debug = false
 end

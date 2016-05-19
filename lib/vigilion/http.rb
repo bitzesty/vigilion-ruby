@@ -8,7 +8,9 @@ module Vigilion
         c.request :multipart
         c.request :json
         c.response :json, content_type: /\bjson$/
-        c.response :detailed_logger
+        if Configuration.debug
+          c.response :detailed_logger, Configuration.logger
+        end
         c.adapter ::Faraday.default_adapter
         c.headers = {
           'X-Api-Key' => Configuration.access_key_id,
