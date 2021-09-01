@@ -20,7 +20,12 @@ module Vigilion
     end
 
     def scan_url(key, url, options = {})
-      send scan: options.merge({ key: key, url: Addressable::URI.unescape(url) })
+      url_to_scan = if Configuration.do_not_unencode
+        url
+      else
+        Addressable::URI.unescape(url)
+      end
+      send scan: options.merge({ key: key, url: url_to_scan })
     end
 
     def scan_path(key, path, options = {})
