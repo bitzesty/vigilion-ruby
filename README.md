@@ -25,6 +25,7 @@ You need to configure the client before making any API requests e.g. in an initi
 
 ```
 Vigilion.configure do |config|
+  config.server_url = # The URL of your vigilion-scanner instance
   config.access_key_id = ENV['VIGILION_API_KEY']
   config.secret_access_key = ENV['VIGILION_API_SECRET']
 end
