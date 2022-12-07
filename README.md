@@ -1,10 +1,6 @@
 # Vigilion
 
-[![Circle CI](https://circleci.com/gh/vigilion/vigilion-ruby.svg?style=shield)](https://circleci.com/gh/vigilion/vigilion-ruby)
-[![Code Climate](https://codeclimate.com/repos/573cf901083c0a124a008778/badges/5ca311f1f7ac8dfa6dd2/gpa.svg)](https://codeclimate.com/repos/573cf901083c0a124a008778/feed)
-
-
-This Ruby gem is for integrating with the [Vigilion Anti-Virus & Malware file scanning service](https://www.vigilion.com/).
+This Ruby gem is for integrating with the [Vigilion Anti-Virus & Malware file scanning service](https://github.com/bitzesty/vigilion-scanner).
 
 If you are using Rails, you should use our [Rails gem](
 https://github.com/vigilion/vigilion-rails), which includes
@@ -34,6 +30,21 @@ Vigilion.configure do |config|
 end
 ```
 
-Vigilion [API documentation](https://docs.vigilion.com/)
+# License
 
-(c) 2015 Bit Zesty Ltd.
+Vigilion scanner is Copyright © 2021 Bit Zesty. It is free
+software, and may be redistributed under the terms specified in the
+[LICENSE.md] file.
+
+[LICENSE.md]: https://github.com/vigilion/vigilion-ruby/blob/master/LICENSE.md
+
+
+# About Bit Zesty
+
+![Bit Zesty](https://bitzesty.com/wp-content/uploads/2017/01/logo_dark.png)
+
+Vigilion malware scanner is maintained by Bit Zesty Limited.
+The names and logos for Bit Zesty are trademarks of Bit Zesty Limited.
+
+See [our other projects](https://bitzesty.com/client-stories/) or
+[hire us](https://bitzesty.com/contact/) to design, develop, and support your product or service.
